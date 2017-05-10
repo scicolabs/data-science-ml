@@ -4,7 +4,7 @@ This is a collection of AWS hands-on labs covering data science, Jupyter noteboo
 
 ## Jupyter Notebooks
 
-- [Jupyter Notebooks on AWS Lab] (Jupyter.md)
+- [Jupyter Notebooks on AWS Lab] (https://github.com/scicolabs/data-science-ml/blob/master/Jupyter.md)
 
 ## Machine Learning
 
