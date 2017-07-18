@@ -36,7 +36,7 @@ Welcome to this self-paced lab! The first step is for you to sign in to Amazon W
 
 1. In this lab we are going to use your existing AWS account. Prior to the lab you will have been given an IAM user with a username and password, and a URL to the AWS IAM console login screen. Browse to that URL and use the username and password credentials to login into the AWS console.  
   
-  ![AWS Console Sign-in](images/aws-signin.png)
+  ![AWS Console Sign-in](images/aws-iam-signin.png)
 
 2. **AWS Region** – all the work you do today will be in a single AWS region. Please check with the lab instructor which AWS region you should use.
 
@@ -52,7 +52,7 @@ The EC2 console will now download the private key for your newly created key pai
 
     chmod 0400 jupyter-lab.pem
 
-Don’t lose this and store is in a safe place! It effectively authenticates you when using AWS programmatically. You don’t want someone else impersonating you or using your credentials. We’ll be using this private key later in the lab.
+Don’t lose this and store it in a safe place! It effectively authenticates you when using AWS programmatically. You don’t want someone else impersonating you or using your credentials. We’ll be using this private key later in the lab.
 
 # Module 1 – Creating your Jupyter Notebook environment
 
@@ -64,56 +64,88 @@ In this module you’ll use an example Jupyter environment we have created and t
 
 ## Creating your Notebook environment
 
-The CloudFormation template that will create this notebook environment for you is available publicly,
+Today, we'll be using the Deep Learning AMI (Amazon Machine Image) provided by AWS to run Jupyter and also interact with commonly used deep learning frameworks and libraries.
 
-	https://s3-ap-southeast-2.amazonaws.com/scico-labs/templates/jupyter.json
+The AWS Deep Learning AMIs are available in the [AWS Marketplace](https://aws.amazon.com/amazon-ai/amis/) or via the Amazon EC2 Console. We'll be launching the Ubuntu-based Deep Learning AMI via the Amazon EC2 Console.
 
-We’re going to use this template to create our first cluster. To do this:
+To do this first make sure you've logged into the AWS Console, and browse to the EC2 Console. Then, from the EC2 Dashboard:
 
-1. Click on the URL above, and download the template to your local computer. This will be saved as a file **jupyter.json**
-2. In your web browser, go to the AWS CloudFormation console
-3. Click the **Create Stack** button
-4. In the “Choose a template” section, select **Upload a template to Amazon S3** and click **Choose File**
-5.	Browse to the location where you downloaded the template (remember the file will be called “jupyter.json”), and select that file
-6.	Click the **Next** button
+1. Click on the **Launch Instance** button
+2. On the left hand navigation, click **AWS Marketplace**
+3. In the search box, type 'Ubuntu Deep Learning', and hit Enter
+4. Click the **Select** button
+5. From the Instance Type screen choose either a 'g2.2xlarge' or a 'p2.xlarge'. Both of these are GPU instance types, which we'll use when we're training deep neural networks.
+6. Click the **Next: Configure Instance Details** button, and leave all the default settings in place
+7. Click the **Next: Add Storage** button, and leave the default storage settings in place
+8. Click the **Next: Add Tags** button. These screen let's us tag our Deep Learning instance with metadata so we can find it again. In this case, click the **Add Tag** Button and add a Name field.
+9. Click the **Next: Configure Security Group** button, and leave the default security group settings in place
+10. Finally, click the **Review and Launch** button. This screen let's you check your instance configuration and review it before launching.
+11. If you're happy with your configuration (you might want to check over it again just to be sure), click the **Launch** button
+12. Here's you'll be prompted to select your key pair. Carefully select the keypair you created earlier, and click the **Launch** button.
 
-The next screen gives you an opportunity to change the behaviour of your template by using CloudFormation parameters. We’re going to make a few minor changes here.
+Your new Deep Learning EC2 instance is now launching. It'll take a couple of minutes for this to complete. 
 
-1. In the **Stack name** field enter a unique name for your Jupyter environment. E.g. use your first name, something like “adrian-jupyter”.  
-
-Then, in the Parameters section, for:  
-
-2. the **KeyName** field, select your keypair you created earlier
-3. the **SubnetId** field, select **subnet-6b48760e** (172.31.0.0/20)
-4. the **VpcId** field, select **vpc-6c7b3209** (172.31.0.0/16)
-
-Then, click the **Next** button
-
-The next screen allows us to tag our Jupyter Notebook environment. We can use whatever metadata we like here, in the form of key-value pairs. I’d suggest giving your notebook a meaningful name so you can find it later (e.g. when you have multiple notebooks or other AWS resources running).
-
-To do this:
-
-1. In the **Key** field, enter “Name”
-2. In the **Value** field, enter a descriptive name for your cluster, e.g. “First Jupyter Notebook”  
-
-You should see something like this:
-
-![Notebook instance metadata](images/metadata.png)
-
-3. Once you’ve done this, click the Next button.
-4. You have an opportunity to review your CloudFormation configuration and make changes if you wish.
-5. Click the **Create** button.
-
-AWS CloudFormation will now go off and do a lot of work for us. If you browse back to the CloudFormation console, you should see a new stack being created. This is your first notebook environment being built. Select the stack and inspect the **Events** tab in the pane on the bottom half of the screen. CloudFormation is doing all this work for us so we don’t have to. 
-The CloudFormation template builds the notebook for us very quickly. In about 60 seconds, you’ll have a completely configured and ready to run Jupyter environment on AWS.
+This is also how you generically create a new EC2 instance on AWS. There's quite a few customizations steps, but as you can see, you can safely accept many of the defaults.
 
 ## Using your Notebook environment
 
 Jupyter provides a web interface for us to interact with. We’ll use this and become familiar with some of the functions it provides in this section.
 
-From the CloudFormation console, browse to the **Outputs** tab in pane at the bottom of the screen. You should see a number of pieces of information about your Jupyter Notebook environment. The one we care about is the **JupyterURL** key. The value of the key is the URL we will use to access the Jupyter Notebook in our web browser. Open this link in a new tab.
+### Setting up an SSH tunnel
 
-If everything worked successfully, you should see something like:
+To do this securely, we'll setup an SSH tunnel to our EC2 instance running Jupyter, and use that tunnel to connect to our remove server.
+
+***OS X / Linux***
+
+If you're using **OS X** or **Linux**, you can simply use the built in SSH client. To do this:
+
+1. Open a terminal window
+2. Make sure the permissions on your private key are correct (you should have done this when you created your key):  
+  
+`chmod 400 <<your_private_key.pem>>` 
+
+and then type the following:  
+  
+`ssh -i <<your_private_key.pem>> -L 8888:localhost:8888 ubuntu@<<ec2_publicdns_name>>
+`
+
+Where,
+
+**<<ec2_publicdns_name>>** is the DNS name for your EC2 instance
+**<<your_private_key.pem>>** is the path to your private key you downloaded earlier
+
+***Windows***
+
+If you're using **Windows**, you can use the PuTTY program to connect to your EC2 instance over SSH and setup the SSH tunnel. To do this, follow [Setting up an SSH tunnel with PuTTY](http://realprogrammers.com/how_to/set_up_an_ssh_tunnel_with_putty.html).
+
+
+What we are doing here is creating a secure tunnel between your local computer and the server. This means all traffic will be encrypted and we won't be exposing any unsecured public ports on the internet. This makes our connection to the Jupyter instance considerably more secure.
+
+### Starting Jupyter
+
+If you were able to open a tunnel, and SSH to your EC2 instance, you should now see an Ubuntu Linux terminal. We want to start Jupyter on our EC2 instance. To do this, type the following at a command prompt:
+
+`jupyter notebook --no-browser`
+
+That's it. If this is successful you should see something like the following output:
+
+<pre>
+$ jupyter notebook --no-browser
+[I 05:59:15.982 NotebookApp] Serving notebooks from local directory: /home/ubuntu
+[I 05:59:15.982 NotebookApp] 0 active kernels 
+[I 05:59:15.982 NotebookApp] The Jupyter Notebook is running at: http://localhost:8888/?token=293b53862610e9d940370a4d6a07d4e890ba992313b2346a
+[I 05:59:15.982 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 05:59:15.982 NotebookApp] 
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://localhost:8888/?token=293b53862610e9d940370a4d6a07d4e890ba992313b2346a
+</pre>
+
+If you now open a browser on your local machine and browse to:
+
+`http://localhost:8888?token=293b53862610e9d940370a4d6a07d4e890ba992313b2346a`
+
+you should see the Jupyter Notebook environment, like:s
 
 ![Jupyter Notebook](images/notebook-screenshot.png)
 
