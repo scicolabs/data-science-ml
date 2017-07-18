@@ -184,7 +184,7 @@ If the command was successful you will see some status information and something
 This command has cloned the jupyter-aws Github repository and made the contents available to us in our Jupyter environment.
 Browse back to the Jupyter Files tab. You should see a new folder called ‘jupyter-aws’. Click on that folder, and then click on the ‘labs’ folder within it. The ‘labs’ folder contains a number of saved notebooks we can run.
 
-For example, let’s try interactively running the Building fractals with x86.ipynb notebook. Clicking on that file will load the notebook. You should see something like,
+For example, let’s try interactively running the 'Building fractals with x86.ipynb' notebook. Clicking on that file will load the notebook. You should see something like,
 
 ![Jupyter Notebook - Fractal](images/notebook-fractal.png)
 
@@ -199,7 +199,7 @@ If you pay careful attention you’ll notice that some cells have a number in sq
 
 Here you can see that the 3rd cell to execute has finished. This cell defined a function ``mandel`` in Python. The cell below it which defines the function ``create_fractal`` is still running.
 
-The result of this simple little Python notebook is a Mandelbrot fractal that is displayed back to you within the notebook! Jupyter is quite powerful like this, you can return results, both images and datasets for example directly within the notebook you’re running. This make interactively building and running code much easier, as you can see the result of your code almost immediately.
+The result of this simple little Python notebook is a Mandelbrot fractal that is displayed back to you within the notebook! Jupyter is quite powerful like this, you can return results, both images and datasets for example directly within the notebook you’re running. You can also use HTML5 elements like <code>canvas</code> to capture input and pass that to code you run in the notebook. We'll see an example of this later in the lab. All of these tools make interactively building and running your code much easier, as you can see the result of your code almost immediately.
 
 ## Checking the status of our notebook environment
 
@@ -226,15 +226,70 @@ If you have finished the introduction above, feel free to experiment with the ot
 
 You may also choose to start writing some R or Julia notebooks. Feel free to start playing around with your new Jupyter notebook environment on AWS!
 
-# Module 2 – Data Science with Jupyter
+# Module 2 - Machine Learning and AI with AWS
+
+Researchers are increasingly challenged with ever growing data volumes, and working with and understanding these growing data volumes is providing a new set of challenges. Whether you’re working directly with new instruments generating larger data volumes which require analysis or if you’re collaborating on data sets created by other researchers, the tools to curate, triage, and then work with that data are changing.
+
+Machine learning is being employed to help automate the process of dealing with large data sets, and gaining original insights from those data sets.
+
+AWS has several artificial intelligence services that provide features such as natural language understanding, text-to-speech, automatic speech recognition, and image recognition as a service. These services are completely managed by AWS and provide APIs for you to interact with. By pre-training ML models and making these available as scalable webservices, you can use AI services very quickly that would otherwise require you to build and manage your own significant and complex machine learning platforms. 
+
+However, if you wish to build your own platforms and services, you can use individual AI engines such as Apache MXNet to build and run your own. Many research groups bring their own machine learning algorithms, tools and libraries, and these can be run effectively at scale on AWS as well.
+
+## Deep Learning on AWS
+
+Neural networks, particularly deep neural networks are being used for all sorts of machine learning challenges. With the availability of capable and powerful GPUs on AWS; building, training and evaluating large and complex networks becomes possible. The art and science of machine learning with deep neural network approaches is called Deep Learning.
+
+AWS makes a number of tools, software, and libraries available to very quickly get started with Deep Learning. For example, AWS maintains and releases the [AWS Deep Learning AMIs](https://aws.amazon.com/amazon-ai/amis/) which allows you to quickly launch an Amazon EC2 instance using Amazon Linux or Ubuntu and get started using popular deep learning libraries and frameworks like Apache MXNet, TensorFlow, the Microsoft Cognitive Toolkit (CNTK), Caffe, Caffe2, Theano, Torch and Keras.
+
+In some cases, you’ll want to train complex deep learning models using more than a single EC2 instance. Training sophisticated deep learning models can take a lot of time, in some cases many hours or days. Distributing this work across a cluster and doing training in a distributed fashion can dramatically speed up the training process. Faster training has multiple benefits including:
+
+- Iterative model design and improvement
+- Reducing time to science, or getting research results faster
+- Adapting more quickly to new data being acquired
+
+The [AWS Deep Learning Cluster](https://github.com/awslabs/deeplearning-cfn) makes it trivial to setup and run a distributed deep learning cluster on Amazon EC2 using the AWS Deep Learning AMI running on CPU or GPU instance types. 
+
+In this lab though, we'll be focusing on smaller deep learning applications that only require a single instance. Of course, you can get multiple GPUs on a single instance in AWS - anywhere from 1 to 16 Nvidia K80 GPUs per instance.
+
+## Apache MXNet
+
+MXNet is a deep learning library focusing on flexibility, portability and performance. It provides both imperative and symbolic programming idioms, supports multiple languages like C, C++, Python, R, Julia, Scala etc and can be run on embedded hardware through to desktop and server class hardware. It can also take advantage of CPU and GPU capability and scales well for distributed training on AWS. The scalability that can be achieved during the training phase with MXNet is part of the reason the AWS Deep Learning Cluster makes MXNet available by default. 
+
+In this lab we're going to use some pre-built MXNet Jupyter Notebooks, and explore different networks, models, and training and evaluation approaches.
+
+Enough talking, let's get started!
+
+## Your first MXNet Notebook
+
+To get started, we'll clone a github.com repository containing a number of interesting MXNet notebooks, and step through some of them.
+
+To do this, run the following in a terminal window on your Jupyter environment:
+
+`git clone https://github.com/dmlc/mxnet-notebooks`
+
+This will create a new folder 'mxnet-notebooks' on your Jupyter instance.
+
+Now we want to explore some of the notebooks. Browse to:
+
+
+
+
+
+
+
+# Module 3 – Data Science with Jupyter
 
 Now that you have a functional Jupyter environment you can start exploring other notebooks people have written. An excellent series of tutorials have been created using Jupyter to teach the basics of Data Science in Python. [The Awesome Data Science](https://www.youtube.com/playlist?list=PLyBBc46Y6aAxkGS2KdE6db0Sw3ixvTFAx) YouTube video tutorial is a wonderful place to start learning about this topic.
 
 All the tutorials mentioned in this video tutorial series are available in their [Github repository](https://github.com/alfredessa/awesomedata.science) as well.
 
+Perhaps you have your own Jupyter notebooks you've been writing.  You might want to have a go at running them on AWS to get access to capabilities you don't currently have.
+
 # Summary
 
-Congratulations! You’ve created and used your first Jupyter Notebook environment on AWS. This is just the beginning! You can run Jupyter notebooks on larger instances, or instances with GPU capability. You can use Jupyter to run big data analytics using Amazon EMR, and you can even control HPC clusters from the comfort of your Jupyter Notebook as well.
+Congratulations! In this lab you created and used your first Jupyter Notebook environment on AWS. You then explored using MXNet and interactively worked with some non-trivial deep learning examples and accelerated the training and evaluation of these models on GPU hardware in the cloud. This is just the beginning! You can run Jupyter notebooks on any instance types available in EC2. You can use Jupyter to run big data analytics using Amazon EMR (a managed Hadoop platform on AWS), and you can even control HPC clusters from the comfort of your Jupyter Notebook as well.
+
 Your AWS account team would also love to hear about your use case and what you’re looking to do with AWS.
 
 **Have fun, and remember, don’t forget to the turn your AWS resources off when you leave the room!**
