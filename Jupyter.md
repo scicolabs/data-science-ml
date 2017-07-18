@@ -12,7 +12,9 @@ By running Jupyter Notebooks on AWS, you can take advantage of infrastructure we
 - Spark, Hadoop on Amazon Elastic MapReduce (EMR)
 - HPC clusters (AWS Batch and CfnCluster)
 
-Essentially you can take advantage of any of the very powerful capabilities made available to you on AWS. 
+Jupyter Notebooks also allow you to take your *code and analysis to the data*, rather than having to move large datasets to your tools (an increasingly difficult task for large and growing research data volumes).
+
+Running Jupyter on AWS means you can be as proximate as possible to some of the most interesting [Open Data](https://aws.amazon.com/government-education/open-data/) sets in the world, like [Earth on AWS](https://aws.amazon.com/earth/), the [Cancer Genome Atlas](https://aws.amazon.com/public-datasets/tcga/), and many others. This combination means you can use some of the newest, and most powerful analysis tools and techniques right next to large datasets to do some pretty interesting things.
 
 ## Technical Knowledge Prerequisites
 
@@ -28,6 +30,7 @@ This lab will take you through:
 
 - Creating Jupyter Notebook environments on AWS
 - Using very simple notebook examples to step through and interactively run code in your Jupyter Notebook environment on AWS
+- Explore Apache MXNet to develop, train and evaluate deep learning models using GPUs in AWS
 
 ## Sign in to the AWS Management Console
 
