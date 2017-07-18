@@ -296,15 +296,19 @@ Now we want to explore some of the notebooks.
 2. Click on the **python** folder
 3. Open **outline.ipynb**
 
-This will load a new Python Notebook in a new tab. This will be the launch pad for exploring the mxnet-notebooks repository we've cloned into our Jupyter environment.
+This will load a new Python Notebook in a new tab. You'll note that it's a simple index to other notebooks and documentation on MXNet. This notebook will be the launch pad for exploring the mxnet-notebooks repository we've cloned into our Jupyter environment. Leave it open in a tab. We'll refer to it throughout the rest of the lab.
 
-### MNIST and Handwriting Recognition
+### MNIST and Handwritten Digit Recognition
 
 Blurb about MNIST and how it works
+
+Click on the MNIST link in the outline notebook.
 
 ### Character based language model using LSTM
 
 Blurb about Char-LSTM
+
+Click on the Char-LSTM link in the outline notebook.
 
 ### Next steps
 
