@@ -167,6 +167,8 @@ you should see the Jupyter Notebook environment, like:
 
 ![Jupyter Notebook](images/notebook-screenshot.png)
 
+### A <strike>HelloWorld</strike> Fractal Jupyter example
+
 There are a number of things we can check now. At the top right of the Jupyter application we can see a **New** dropdown. Click on that. You should see a number of options to create a new text file, a new terminal and so on. We also have the option of creating two different types of notebooks; Python 2 and a Python 3. These environments and programming languages have been installed for you by default. It's easy to install other languages too. Jupyter supports being extended this way, using different Jupyter kernels. For example, you might want to install R and Julia kernels to build and run notebooks using those languages.
 
 ![Jupyter Notebook - New options](images/notebook-new-options.png)
@@ -182,7 +184,7 @@ The **IPython Clusters** tab allows you to configure your notebook environment t
 Getting some code to run in our Notebook
 Example notebooks have been created and made available on Github.com at,
 
-    https://github.com/scicolabs/jupyter-aws
+    https://github.com/scicolabs/data-science-ml
 
 We are going to use this a baseline to start exploring running code interactively in our new Notebook environment. To do this we’ll open a new Terminal session, and use the Git command-line environment to clone the examples above to our Jupyter environment.
 
@@ -199,8 +201,8 @@ If the command was successful you will see some status information and something
 
 ![Jupyter Notebook Terminal](images/notebook-terminal.png)
 
-This command has cloned the jupyter-aws Github repository and made the contents available to us in our Jupyter environment.
-Browse back to the Jupyter Files tab. You should see a new folder called ‘jupyter-aws’. Click on that folder, and then click on the ‘labs’ folder within it. The ‘labs’ folder contains a number of saved notebooks we can run.
+This command has cloned the data-science-ml Github repository and made the contents available to us in our Jupyter environment.
+Browse back to the Jupyter Files tab. You should see a new folder called **data-science-ml**. Click on that folder, and then click on the **labs** folder within it. The **labs** folder contains a number of saved notebooks we can run.
 
 For example, let’s try interactively running the 'Building fractals with x86.ipynb' notebook. Clicking on that file will load the notebook. You should see something like,
 
@@ -280,18 +282,31 @@ Enough talking, let's get started!
 
 ## Your first MXNet Notebook
 
-To get started, we'll clone a github.com repository containing a number of interesting MXNet notebooks, and step through some of them.
+To get started, we'll clone a github.com repository containing a number of interesting MXNet notebooks, and step through some of them. These notebooks are updated and maintained as examples for you to learn about MXNet - [https://github.com/dmlc/mxnet-notebooks](https://github.com/dmlc/mxnet-notebooks).
 
-To do this, run the following in a terminal window on your Jupyter environment:
+Let's clone the repository into our running Jupyter environment:
 
-`git clone https://github.com/dmlc/mxnet-notebooks`
+`git clone https://github.com/dmlc/mxnet-notebooks.git`
 
 This will create a new folder **mxnet-notebooks** on your Jupyter instance.
 
-Now we want to explore some of the notebooks. Browse to:
+Now we want to explore some of the notebooks.
 
+1. Click on the **mxnet-notebooks** folder
+2. Click on the **python** folder
+3. Open **outline.ipynb**
 
+This will load a new Python Notebook in a new tab. This will be the launch pad for exploring the mxnet-notebooks repository we've cloned into our Jupyter environment.
 
+### MNIST and Handwriting Recognition
+
+Blurb about MNIST and how it works
+
+### Character based language model using LSTM
+
+Blurb about Char-LSTM
+
+### Next steps
 
 
 
