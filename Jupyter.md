@@ -30,7 +30,7 @@ This lab will take you through:
 
 - Creating Jupyter Notebook environments on AWS
 - Using very simple notebook examples to step through and interactively run code in your Jupyter Notebook environment on AWS
-- Explore Apache MXNet to develop, train and evaluate deep learning models using GPUs in AWS
+- Explore [Apache MXNet](http://mxnet.io/) to develop, train and evaluate deep learning models using GPUs in AWS
 
 ## Sign in to the AWS Management Console
 
@@ -63,11 +63,9 @@ We describe the detailed step-by-step process used to create an automated Jupyte
 
 For the scientific researcher, engineer, or technical user, being able to quickly start up a server instance for running applications, writing code, or even post-process data is one of the great things about Amazon Web Services (AWS). One of the most common tools used for developing and maintaining applications is Jupyter. Jupyter allows interactive data science and scientific computing across 40 different programming languages. It allows researchers to share/exchange live code, data sets, and visualization so that they can collaborate more efficiently. These are called notebooks, and their use is growing.
 
-In this module you’ll use an example Jupyter environment we have created and tested for you. We have implemented this using AWS CloudFormation to make it really easy to create and manage the lifecycle of your very own notebook environment on AWS.
+Today, we'll be using the Deep Learning AMI (Amazon Machine Image) provided by AWS to run Jupyter and also interact with commonly used deep learning frameworks and libraries.
 
 ## Creating your Notebook environment
-
-Today, we'll be using the Deep Learning AMI (Amazon Machine Image) provided by AWS to run Jupyter and also interact with commonly used deep learning frameworks and libraries.
 
 The AWS Deep Learning AMIs are available in the [AWS Marketplace](https://aws.amazon.com/amazon-ai/amis/) or via the Amazon EC2 Console. We'll be launching the Ubuntu-based Deep Learning AMI via the Amazon EC2 Console.
 
@@ -75,20 +73,30 @@ To do this first make sure you've logged into the AWS Console, and browse to the
 
 1. Click on the **Launch Instance** button
 2. On the left hand navigation, click **AWS Marketplace**
-3. In the search box, type 'Ubuntu Deep Learning', and hit Enter
+3. In the search box, type 'Ubuntu Deep Learning', and hit Enter. You should see something like the following:  
+
+![Ubuntu Deep Learning AMI](images/aws-deep-learning-ami.png)
+
+Now, to continue launching this AMI:
+
 4. Click the **Select** button
-5. From the Instance Type screen choose either a 'g2.2xlarge' or a 'p2.xlarge'. Both of these are GPU instance types, which we'll use when we're training deep neural networks.
+5. From the Instance Type screen choose either a 'g2.2xlarge' or a 'p2.xlarge'. Both of these are GPU instance types, which we'll use when we're training deep learning models.
 6. Click the **Next: Configure Instance Details** button, and leave all the default settings in place
 7. Click the **Next: Add Storage** button, and leave the default storage settings in place
-8. Click the **Next: Add Tags** button. These screen let's us tag our Deep Learning instance with metadata so we can find it again. In this case, click the **Add Tag** Button and add a Name field.
+8. Click the **Next: Add Tags** button. These screen let's us tag our Deep Learning instance with metadata so we can find it again. In this case, click the **Add Tag** Button and add a **Name** key, and a descriptive name in the **Value** field. You should see something like this:  
+  
+![Instance metadata](images/aws-instance-metadata.png)
+
+To finish creating the instance:
+
 9. Click the **Next: Configure Security Group** button, and leave the default security group settings in place
 10. Finally, click the **Review and Launch** button. This screen let's you check your instance configuration and review it before launching.
 11. If you're happy with your configuration (you might want to check over it again just to be sure), click the **Launch** button
-12. Here's you'll be prompted to select your key pair. Carefully select the keypair you created earlier, and click the **Launch** button.
+12. Here's you'll be prompted to select your key pair. *Carefully select the keypair you created earlier*, and click the **Launch Instances** button.
 
 Your new Deep Learning EC2 instance is now launching. It'll take a couple of minutes for this to complete. 
 
-This is also how you generically create a new EC2 instance on AWS. There's quite a few customizations steps, but as you can see, you can safely accept many of the defaults.
+This is also how you generally create a new EC2 instance on AWS. There's quite a few customizations steps, but as you can see, you can safely accept many of the defaults.
 
 ## Using your Notebook environment
 
@@ -97,6 +105,12 @@ Jupyter provides a web interface for us to interact with. We’ll use this and b
 ### Setting up an SSH tunnel
 
 To do this securely, we'll setup an SSH tunnel to our EC2 instance running Jupyter, and use that tunnel to connect to our remove server.
+
+But first, we need to know what the public DNS name for your new Jupyter instance is. To do this, browse back to the EC2 console, and select your new instance. In the instance details pane at the bottom of the screen you should see the Public DNS name for the instance. The following screenshot shows this:
+
+![Public DNS for your instance](images/aws-public-dns-instance.png)
+
+Copy this DNS name into your clipboard. We'll refer to it later when we're connecting to our instance via SSH.
 
 ***OS X / Linux***
 
@@ -121,7 +135,6 @@ Where,
 
 If you're using **Windows**, you can use the PuTTY program to connect to your EC2 instance over SSH and setup the SSH tunnel. To do this, follow [Setting up an SSH tunnel with PuTTY](http://realprogrammers.com/how_to/set_up_an_ssh_tunnel_with_putty.html).
 
-
 What we are doing here is creating a secure tunnel between your local computer and the server. This means all traffic will be encrypted and we won't be exposing any unsecured public ports on the internet. This makes our connection to the Jupyter instance considerably more secure.
 
 ### Starting Jupyter
@@ -134,25 +147,27 @@ That's it. If this is successful you should see something like the following out
 
 <pre>
 $ jupyter notebook --no-browser
-[I 05:59:15.982 NotebookApp] Serving notebooks from local directory: /home/ubuntu
-[I 05:59:15.982 NotebookApp] 0 active kernels 
-[I 05:59:15.982 NotebookApp] The Jupyter Notebook is running at: http://localhost:8888/?token=293b53862610e9d940370a4d6a07d4e890ba992313b2346a
-[I 05:59:15.982 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
-[C 05:59:15.982 NotebookApp] 
+[I 11:18:53.314 NotebookApp] Writing notebook server cookie secret to /run/user/1000/jupyter/notebook_cookie_secret
+[I 11:18:53.468 NotebookApp] Serving notebooks from local directory: /home/ubuntu
+[I 11:18:53.468 NotebookApp] 0 active kernels 
+[I 11:18:53.468 NotebookApp] The Jupyter Notebook is running at: http://localhost:8888/?token=f7979ebd4677c66a08591d30719681e6ecafd0ea86437739
+[I 11:18:53.468 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 11:18:53.468 NotebookApp] 
+    
     Copy/paste this URL into your browser when you connect for the first time,
     to login with a token:
-        http://localhost:8888/?token=293b53862610e9d940370a4d6a07d4e890ba992313b2346a
+        http://localhost:8888/?token=f7979ebd4677c66a08591d30719681e6ecafd0ea86437739
 </pre>
 
 If you now open a browser on your local machine and browse to:
 
 `http://localhost:8888?token=293b53862610e9d940370a4d6a07d4e890ba992313b2346a`
 
-you should see the Jupyter Notebook environment, like:s
+you should see the Jupyter Notebook environment, like:
 
 ![Jupyter Notebook](images/notebook-screenshot.png)
 
-There are a number of things we can check now. At the top right of the Jupyter application we can see a **New** dropdown. Click on that. You should see a number of options to create a new text file, a new terminal and so on. We also have the option of creating three different types of notebooks; a Julia, Python, and R notebook. These environments and programming languages have been installed for you by default.
+There are a number of things we can check now. At the top right of the Jupyter application we can see a **New** dropdown. Click on that. You should see a number of options to create a new text file, a new terminal and so on. We also have the option of creating two different types of notebooks; Python 2 and a Python 3. These environments and programming languages have been installed for you by default. It's easy to install other languages too. Jupyter supports being extended this way, using different Jupyter kernels. For example, you might want to install R and Julia kernels to build and run notebooks using those languages.
 
 ![Jupyter Notebook - New options](images/notebook-new-options.png)
 
@@ -162,7 +177,7 @@ The **Files** tab is the default view, and shows us the files and folders within
 
 The **Running** tab shows you the Terminals and Notebooks you are currently running. You can have multiple terminal sessions and notebooks running at the same time.
 
-The **IPython Clusters** tab allows you to configure your notebook environment to do parallel computing using Python. IPython Clusters is an example of a Jupyter Notebook extension. We have installed and configured this for you by default.
+The **IPython Clusters** tab allows you to configure your notebook environment to do parallel computing using Python. IPython Clusters is an example of a Jupyter Notebook extension. 
 
 Getting some code to run in our Notebook
 Example notebooks have been created and made available on Github.com at,
@@ -237,7 +252,7 @@ Machine learning is being employed to help automate the process of dealing with 
 
 AWS has several artificial intelligence services that provide features such as natural language understanding, text-to-speech, automatic speech recognition, and image recognition as a service. These services are completely managed by AWS and provide APIs for you to interact with. By pre-training ML models and making these available as scalable webservices, you can use AI services very quickly that would otherwise require you to build and manage your own significant and complex machine learning platforms. 
 
-However, if you wish to build your own platforms and services, you can use individual AI engines such as Apache MXNet to build and run your own. Many research groups bring their own machine learning algorithms, tools and libraries, and these can be run effectively at scale on AWS as well.
+However, if you wish to build your own platforms and services, you can use individual AI engines such as [Apache MXNet](http://mxnet.io/) to build and run your own. Many research groups bring their own machine learning algorithms, tools and libraries, and these can be run effectively at scale on AWS as well.
 
 ## Deep Learning on AWS
 
@@ -257,7 +272,7 @@ In this lab though, we'll be focusing on smaller deep learning applications that
 
 ## Apache MXNet
 
-MXNet is a deep learning library focusing on flexibility, portability and performance. It provides both imperative and symbolic programming idioms, supports multiple languages like C, C++, Python, R, Julia, Scala etc and can be run on embedded hardware through to desktop and server class hardware. It can also take advantage of CPU and GPU capability and scales well for distributed training on AWS. The scalability that can be achieved during the training phase with MXNet is part of the reason the AWS Deep Learning Cluster makes MXNet available by default. 
+[MXNet](http://mxnet.io/) is a deep learning library focusing on flexibility, portability and performance. It provides both imperative and symbolic programming idioms, supports multiple languages like C, C++, Python, R, Julia, Scala etc and can be run on embedded hardware through to desktop and server class hardware. It can also take advantage of CPU and GPU capability and scales well for distributed training on AWS. The scalability that can be achieved during the training phase with MXNet is part of the reason the AWS Deep Learning Cluster makes MXNet available by default. 
 
 In this lab we're going to use some pre-built MXNet Jupyter Notebooks, and explore different networks, models, and training and evaluation approaches.
 
@@ -271,7 +286,7 @@ To do this, run the following in a terminal window on your Jupyter environment:
 
 `git clone https://github.com/dmlc/mxnet-notebooks`
 
-This will create a new folder 'mxnet-notebooks' on your Jupyter instance.
+This will create a new folder **mxnet-notebooks** on your Jupyter instance.
 
 Now we want to explore some of the notebooks. Browse to:
 
