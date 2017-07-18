@@ -193,7 +193,7 @@ To do this,
 3. This will open a Linux Bash shell in your web browser! From here you can run command line tools to do whatever you’d like within your Jupyter environment.
 4. We’ve already installed the git tools for you, so let’s clone the Github repository. To do this, copy the following command line and paste it into the Terminal session.
 
-	``git clone https://github.com/scicolabs/jupyter-aws.git``
+	``git clone https://github.com/scicolabs/data-science-ml.git``
 	
 If the command was successful you will see some status information and something looking like,
 
