@@ -345,6 +345,18 @@ Run Jupyter Notebook and JupyterHub on Amazon EMR
 
 	https://aws.amazon.com/blogs/big-data/running-jupyter-notebook-and-jupyterhub-on-amazon-emr/
 
+AWS Deep Learning AMIs
+
+	https://aws.amazon.com/amazon-ai/amis/
+
+Apache MXNet on AWS
+
+	https://aws.amazon.com/mxnet/
+
+Distributed Deep Learning Made Easy
+
+	https://aws.amazon.com/blogs/compute/distributed-deep-learning-made-easy/
+
 Research & Technical Computing at AWS
 
 	https://aws.amazon.com/rtc
