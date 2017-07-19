@@ -337,14 +337,6 @@ Your AWS account team would also love to hear about your use case and what youâ€
 
 # Additional Resources
 
-Creating and Using a Jupyter Instance on AWS
-
-	https://d0.awsstatic.com/WWPS/PDF/AWS_Jupyter_Instance_Whitepaper_v6.pdf
-
-Run Jupyter Notebook and JupyterHub on Amazon EMR
-
-	https://aws.amazon.com/blogs/big-data/running-jupyter-notebook-and-jupyterhub-on-amazon-emr/
-
 AWS Deep Learning AMIs
 
 	https://aws.amazon.com/amazon-ai/amis/
@@ -356,6 +348,14 @@ Apache MXNet on AWS
 Distributed Deep Learning Made Easy
 
 	https://aws.amazon.com/blogs/compute/distributed-deep-learning-made-easy/
+
+Creating and Using a Jupyter Instance on AWS
+
+	https://d0.awsstatic.com/WWPS/PDF/AWS_Jupyter_Instance_Whitepaper_v6.pdf
+
+Run Jupyter Notebook and JupyterHub on Amazon EMR
+
+	https://aws.amazon.com/blogs/big-data/running-jupyter-notebook-and-jupyterhub-on-amazon-emr/
 
 Research & Technical Computing at AWS
 
