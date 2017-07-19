@@ -300,20 +300,23 @@ This will load a new Python Notebook in a new tab. You'll note that it's a simpl
 
 ### MNIST and Handwritten Digit Recognition
 
-Blurb about MNIST and how it works
+MNIST is a classic computer vision application: identify hand written digits with neural networks.
 
-Click on the MNIST link in the outline notebook.
+Click on the **MNIST** link in the outline notebook. This will open a step-by-step guide for creating and training a simple multi-layer perception to recognise hand written digits, as well as a more sophisticated convolutional neural network to do better recognition.
+
+This example shows a nice feature of Jupyter notebooks, that you can capture input within the notebook and use that in your code. In this case, we allow the user to draw a digit with the HTML5 canvas element, and then use that as an input to the model to do recognition on.
 
 ### Character based language model using LSTM
 
-Blurb about Char-LSTM
+Recurrent neural networks (RNN) are a powerful and fairly special type of network that allow us to operate over sequences of input and potentially generate sequences of outputs. This means RNNs can be used to recognize patterns in sequences of data, e.g. text, genomes, spoken word etc.
 
-Click on the Char-LSTM link in the outline notebook.
+Long short-term memory (LSTM) networks are a type of RNN and have been used with great success for tasks like machine translation or language modeling. Actually, RNNs more generally effectively describe programs. In fact, RNNs are Turing Complete.
+
+Click on the **Char-LSTM** link in the outline notebook. This opens a guide for building an using an LSTM network in MXNet to generate text based on a set of training data. This is a pretty fun example - most people who run though this example want to try and use it to generate speeches for the current U.S. President. That is left as an exercise for the reader ;)
 
 ### Next steps
 
-
-
+Feel free to browse around the other notebook examples. There are many types of networks presented and explained thoroughly in this repository. You're free to use them and modify them as you wish.
 
 # Module 3 – Data Science with Jupyter
 
