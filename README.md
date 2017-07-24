@@ -4,7 +4,7 @@ This is a collection of AWS hands-on labs covering data science, Jupyter noteboo
 
 ## Jupyter Notebooks & Deep Learning with MXNet
 
-- [Jupyter Notebooks on AWS](Jupyter.md) Lab
+- [Jupyter Notebooks on AWS with MXNet](Jupyter.md) Lab
 
 ## Presentations
 
