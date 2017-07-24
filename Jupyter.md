@@ -1,4 +1,4 @@
-# Jupyter Notebooks on AWS
+# Jupyter Notebooks on AWS with MXNet
 ## Introduction
 
 In this lab you will be introduced to Jupyter Notebooks on AWS. [Jupyter](http://jupyter.org/) provides a user-friendly and easy-to-use interactive programming environment in a web browser. Jupyter runs very well just about anywhere. You can run it on your laptop, your desktop machine, or in the AWS cloud.
