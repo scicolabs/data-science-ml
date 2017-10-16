@@ -37,7 +37,7 @@ This lab will take you through:
 Using your AWS account to sign in to the AWS Management Console
 Welcome to this self-paced lab! The first step is for you to sign in to Amazon Web Services.
 
-1. In this lab we are going to use your existing AWS account. Prior to the lab you will have been given an IAM user with a username and password, and a URL to the AWS IAM console login screen. Browse to that URL and use the username and password credentials to login into the AWS console.  
+1. In this lab we are going to be using an existing AWS account. Prior to the lab you will have been given an IAM user with a username and password, and a URL to the AWS IAM console login screen. Browse to that URL and use the username and password credentials to login into the AWS console.  
   
   ![AWS Console Sign-in](images/aws-iam-signin.png)
 
@@ -318,7 +318,35 @@ Click on the **Char-LSTM** link in the outline notebook. This opens a guide for 
 
 Feel free to browse around the other notebook examples. There are many types of networks presented and explained thoroughly in this repository. You're free to use them and modify them as you wish.
 
-# Module 3 – Data Science with Jupyter
+# Module 3 - MXNet and Gluon
+
+Recently, AWS and Microsoft announced a new deep learning library, focusing on ease of use and developer productivity, but also providing powerful tools to build networks on the fly in native Python, using pre-built components like layers, optimizers and initializers. This library is called [Gluon](https://aws.amazon.com/blogs/ai/introducing-gluon-an-easy-to-use-programming-interface-for-flexible-deep-learning/).
+
+AWS has already implemented Gluon and made it available as part of MXNet, which you discovered in an earlier module. We have also written a complete introduction to Gluon (and Deep Learning generally), and called it [Deep Learning - The Straight Dope](http://thestraightdope.mxnet.io/). 
+
+In this module, we'll clone some example notebooks making use of the new Gluon library in MXNet into our running Jupyter environment and step through them.
+
+## Gluon Notebooks
+
+Let's get some notebooks and have a play. You're free to run and explore any of these at your own pace. The notes below point you to some more advanced material on how to use multiple GPUs to scale your deep learning work, but you can try any of the notebooks you wish.
+
+To do this, open a Terminal in your Jupyter environment and run:
+
+`git clone https://github.com/zackchase/mxnet-the-straight-dope/`
+
+This will create a new folder in your Jupyter home called `mxnet-the-straight-dope`. 
+
+Go to your Jupyter notebook home, and go to the following folder:
+
+`mxnet-the-straight-dope / chapter07_distributed-learning folder`
+
+This folder contains several Notebooks which use Gluon to show you how to do data parallel deep learning using multiple GPUs, and even multiple machines with multiple GPUs.
+
+Explore some of these if it's of interest to you. The cloud gives you a unique place to do some seriously large scale compute, and deep learning across a cluster of GPUs is much much simpler with Gluon!
+
+
+
+# Module 4 – Data Science with Jupyter
 
 Now that you have a functional Jupyter environment you can continue exploring other notebooks people have written. An excellent series of tutorials have been created using Jupyter to teach the basics of Data Science in Python. [The Awesome Data Science](https://www.youtube.com/playlist?list=PLyBBc46Y6aAxkGS2KdE6db0Sw3ixvTFAx) YouTube video tutorial is a wonderful place to start learning about this topic.
 
