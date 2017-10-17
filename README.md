@@ -9,5 +9,5 @@ This is a collection of AWS hands-on labs covering data science, Jupyter noteboo
 ## Presentations
 
 - [Data analytics and Deep Learning on AWS with Jupyter and MXNet
-](https://s3-ap-southeast-2.amazonaws.com/scico-labs/docs/AWS-presentation.pdf)
+](https://s3-ap-southeast-2.amazonaws.com/scico-labs/AWS-presentation.pdf)
 
