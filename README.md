@@ -5,9 +5,9 @@ This is a collection of AWS hands-on labs covering data science, Jupyter noteboo
 ## Jupyter Notebooks & Deep Learning with MXNet
 
 - [Jupyter Notebooks on AWS with MXNet](Jupyter.md) Lab
+- [Lab environment](https://s3-ap-southeast-2.amazonaws.com/scico-labs/lab-env.html)
 
 ## Presentations
 
-- [Data analytics and Deep Learning on AWS with Jupyter and MXNet
-](https://s3-ap-southeast-2.amazonaws.com/scico-labs/AWS-presentation.pdf)
+- [Data analytics and Deep Learning on AWS with Jupyter and MXNet](AWS+Data+Analytics+DL+Jupyter+with+MXNet.pdf)
 
